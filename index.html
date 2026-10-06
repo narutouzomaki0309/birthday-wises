@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Access ❤️</title>
+    <!-- Google Fonts for stylish typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Animated Romantic Gradient Background */
+            background: linear-gradient(-45deg, #ff9a9e, #fecfef, #ffc3a0, #ffafbd);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            overflow: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Hearts Background Animation */
+        .bg-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .bg-hearts span {
+            position: absolute;
+            display: block;
+            width: 25px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.4);
+            animation: floatHearts 5s linear infinite;
+            bottom: -100px;
+            /* Heart Shape using Clip-Path */
+            clip-path: polygon(50% 15%, 61% 0, 85% 0, 100% 21%, 100% 46%, 50% 100%, 0 46%, 0 21%, 15% 0, 39% 0);
+        }
+        .bg-hearts span:nth-child(1) { left: 15%; animation-duration: 6s; }
+        .bg-hearts span:nth-child(2) { left: 35%; animation-duration: 5s; animation-delay: 2s; }
+        .bg-hearts span:nth-child(3) { left: 55%; animation-duration: 7s; }
+        .bg-hearts span:nth-child(4) { left: 75%; animation-duration: 5.5s; animation-delay: 1s; }
+        .bg-hearts span:nth-child(5) { left: 90%; animation-duration: 6.5s; animation-delay: 3s; }
+
+        @keyframes floatHearts {
+            0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.2) rotate(360deg); opacity: 0; }
+        }
+
+        /* Glassmorphism Card (Frosted Glass Effect) */
+        .glass-card {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            width: 90%;
+            max-width: 380px;
+            box-shadow: 0 8px 32px 0 rgba(255, 105, 135, 0.3);
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            transition: all 0.4s ease;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .icon-lock {
+            font-size: 45px;
+            margin-bottom: 10px;
+            display: inline-block;
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));
+        }
+
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 38px;
+            color: #fff;
+            margin-bottom: 5px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.15);
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #fff;
+            margin-bottom: 30px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* Stylish Input Field */
+        .password-input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 30px;
+            border: 2px solid transparent;
+            background: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+            color: #333;
+            outline: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .password-input:focus {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #ff9a9e;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            transform: scale(1.02);
+        }
+
+        .password-input::placeholder {
+            color: #888;
+        }
+
+        /* Glowing Button */
+        .unlock-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(45deg, #ff6b81, #ff4757);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .unlock-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.6);
+        }
+
+        /* Error Message */
+        .error-msg {
+            color: #ff3f34;
+            font-size: 13px;
+            margin-top: 15px;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 6px 12px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Hearts Behind the Card -->
+    <div class="bg-hearts" style="background-image: url('images/6th.jpeg'); background-size: cover;">
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <main class="glass-card">
+        <div class="icon-lock">🔐</div>
+        <h1 class="title">Secret Access</h1>
+        <p class="subtitle">Enter the magic word to unlock your surprise ✨</p>
+
+        <input type="password" id="passInput" class="password-input" placeholder="Type the secret password...">
+        
+        <button onclick="checkPassword()" class="unlock-btn">
+            Unlock Surprise 🔓
+        </button>
+
+        <p id="errorText" class="error-msg">Oops! Galat password. Phir se try karo 🥺</p>
+    </main>
+
+    <script>
+    function checkPassword() {
+        let enteredPass = document.getElementById("passInput").value;
+        let errorMsg = document.getElementById("errorText");
+        let card = document.querySelector('.glass-card');
+        
+        // Yahan "10oct" ka encoded roop likha hai. 
+        // Ab koi code dekhega toh use "MTBvY3Q=" dikhega, asli password nahi.
+        let encodedCorrectPass = "MTBvY3Q="; 
+
+        // User jo password daalega, hum usko bhi encode karke match karenge
+        if (btoa(enteredPass.toLowerCase()) === encodedCorrectPass) {
+            
+            card.style.transform = 'scale(0.9)';
+            card.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = "home.html"; 
+            }, 400);
+            
+        } else {
+            
+            errorMsg.style.opacity = "1";
+            card.animate([
+                { transform: 'translateX(0px)' },
+                { transform: 'translateX(-10px)' },
+                { transform: 'translateX(10px)' },
+                { transform: 'translateX(-10px)' },
+                { transform: 'translateX(10px)' },
+                { transform: 'translateX(0px)' }
+            ], { duration: 400 });
+            
+        }
+    }
+
+    document.getElementById("passInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            checkPassword();
+        }
+    });
+</script>
+</body>
+</html>
